@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-link
+      author: Serge
+      changes:
+        - createTable:
+            tableName: link
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: short
+                  type: varchar(15)
+              - column:
+                  name: original
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: count
+                  type: bigint
+                  defaultValue: 0
+
+        - createSequence:
+            incrementBy: 1
+            maxValue: 100000
+            schemaName: public
+            sequenceName: link_seq
+            startValue: 1
