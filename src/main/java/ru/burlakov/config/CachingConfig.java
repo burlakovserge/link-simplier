@@ -14,15 +14,6 @@ import java.time.Duration;
 @EnableCaching
 public class CachingConfig {
 
-//    @Bean
-//    public CacheManager cacheManager() {
-//        SimpleCacheManager cacheManager = new SimpleCacheManager();
-//        cacheManager.setCaches(Arrays.asList(
-//                new ConcurrentMapCache("original_links"),
-//                new ConcurrentMapCache("short_links")));
-//        return cacheManager;
-//    }
-
     @Bean
     public RedisCacheConfiguration cacheConfiguration() {
         return RedisCacheConfiguration.defaultCacheConfig()

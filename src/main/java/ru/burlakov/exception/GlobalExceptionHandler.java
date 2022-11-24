@@ -16,15 +16,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler
-    public ResponseEntity<String> illegal(IllegalStateException ex) {
-//        log.error(ex.getMessage());
+    public ResponseEntity<String> handleException(Exception ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler
-    public ResponseEntity<ElementException> handleException(Exception ex) {
-        ElementException exception = new ElementException(ex.getMessage());
-//        log.error(ex.getMessage());
-        return new ResponseEntity<>(exception, HttpStatus.BAD_REQUEST);
     }
 }

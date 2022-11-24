@@ -9,7 +9,6 @@ import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ru.burlakov.dto.ResponseDto;
@@ -69,8 +68,7 @@ public class LinkService {
     }
 
     public Page<Link> getPageableLink(Integer page, Integer count) {
-        Pageable sortedByPriceDesc = PageRequest.of(page, count, Sort.by("count").descending());
-        return linkRepository.findAll(sortedByPriceDesc);
+        return linkRepository.findAll(PageRequest.of(page, count, Sort.by("count").descending()));
     }
 
 }
